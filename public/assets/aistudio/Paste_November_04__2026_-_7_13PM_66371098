@@ -1,0 +1,1087 @@
+# MASTER BUILD PROMPT: RITU'S CLOUD KITCHEN
+
+## 1. Your Role
+
+Act as a senior full-stack developer, product designer, database architect, and QA engineer.
+
+Build a fully functional, responsive, mobile-first expense management web application called **Ritu's Cloud Kitchen**.
+
+This is a practical expense tracker for a cloud kitchen owner who needs to record daily kitchen spending, bulk ingredient purchases, recurring expenses, and monitor where money is being spent.
+
+Do not create just a UI prototype or static dashboard. Build a working application with functional forms, persistent database operations, calculations, reports, editing, deletion, and filtering.
+
+Use simple architecture and avoid unnecessary complexity.
+
+## 2. Core Objective
+
+The application must help the owner:
+
+- Record daily kitchen expenses quickly.
+- Record multiple expenses together.
+- Record bulk purchases with multiple items in one bill.
+- Categorise every expense automatically or manually.
+- Track daily, weekly, and monthly spending.
+- Track paid, partially paid, and unpaid expenses.
+- Understand which categories consume the most money.
+- Search and retrieve previous expenses.
+- Generate expense reports.
+- Store all records permanently in Google Sheets.
+
+The application must be extremely easy to use, especially on a mobile phone.
+
+A normal daily expense entry should take approximately 10–15 seconds.
+
+## 3. Technology and Architecture
+
+Build a full-stack web application using:
+
+- Frontend: React with TypeScript.
+- Styling: Tailwind CSS.
+- Icons: Lucide icons.
+- Charts: Recharts or an equivalent lightweight charting library.
+- Backend: Google AI Studio's supported server-side Node.js runtime.
+- Database: Google Sheets.
+- Authentication: Google Sign-In / Google Workspace OAuth integration.
+- Currency: Indian Rupees (₹).
+- Locale: India.
+- Timezone: Asia/Kolkata.
+
+### Important Google Sheets integration instructions
+
+Google Sheets must be the primary and permanent database.
+
+Use the native Google Workspace / Google Sheets integration available in Google AI Studio Build mode.
+
+1. Enable the Google Sheets integration.
+2. Configure Google OAuth authorization through the supported AI Studio integration.
+3. Create a Google Spreadsheet named:
+
+   **Ritu's Cloud Kitchen - Expense Database**
+
+4. Create the required worksheets and column headers automatically.
+5. Use server-side Google Sheets API operations for reading and writing records.
+6. Never expose OAuth access tokens, private credentials, or sensitive configuration in frontend code.
+7. Do not use browser localStorage as the main database.
+8. Do not use dummy data as a substitute for database operations.
+9. Make sure every saved record remains available after refreshing the app or reopening it.
+10. Display clear errors if Google authorization, reading, or writing fails.
+
+If a Google Sheets permission or integration setup must be completed manually, clearly explain exactly what the owner needs to authorize. Do not silently substitute Firebase, Supabase, or another database.
+
+## 4. User Interface and Design
+
+Create a modern, clean, professional interface.
+
+The design should feel like a simple business management application rather than complicated accounting software.
+
+### Design direction
+
+- Clean, minimal layout.
+- Light theme by default.
+- White and warm off-white backgrounds.
+- Deep green as the primary action colour.
+- Dark, readable text.
+- Subtle borders and shadows.
+- Rounded cards and buttons.
+- Consistent spacing.
+- Clear typography.
+- Simple icons.
+- Easy-to-read numbers.
+- Avoid unnecessary animations and decorative elements.
+
+### Responsive design
+
+Desktop:
+- Sidebar navigation.
+- Main content dashboard.
+- Clearly organised expense tables and reports.
+
+Mobile:
+- Compact top header.
+- Bottom navigation.
+- Large, easy-to-tap buttons.
+- Single-column layouts.
+- Forms that fit the screen.
+- Sticky Add Expense button where useful.
+- No horizontal scrolling.
+- Tables should become readable cards or responsive lists.
+
+The mobile experience is extremely important because expenses will mostly be added during daily kitchen operations.
+
+## 5. Main Application Navigation
+
+Create these main sections:
+
+1. Dashboard
+2. Add Expense
+3. All Expenses
+4. Bulk Purchases
+5. Recurring Expenses
+6. Reports
+7. Settings
+
+Use clear labels and simple navigation.
+
+---
+
+## 6. Dashboard
+
+Create a dashboard that immediately shows the financial position of the kitchen.
+
+### Top summary cards
+
+Display:
+
+**Today's Expenses**
+- Total expenses recorded today.
+- Number of expense entries.
+
+**This Week**
+- Total spending during the current week.
+
+**This Month**
+- Total spending during the current calendar month.
+
+**Outstanding Expenses**
+- Total unpaid and remaining amounts.
+
+**Average Daily Expense**
+- Monthly expenses divided by the number of days in the selected reporting period.
+
+All figures must be calculated from real Google Sheets records.
+
+### Dashboard charts
+
+Create:
+
+**1. Daily Expense Trend**
+- Line or bar chart.
+- Show the last 7 days by default.
+- Allow switching between 7 days, 30 days, and 90 days.
+
+**2. Category Breakdown**
+- Doughnut chart.
+- Display spending by expense category.
+- Show amount and percentage.
+
+**3. Payment Method Breakdown**
+- Show spending through Cash, UPI, Bank Transfer, Card, and other configured payment methods.
+
+### Recent Expenses
+
+Show the latest 10 expense entries.
+
+Display:
+- Expense date.
+- Item or description.
+- Category.
+- Amount.
+- Payment status.
+
+Add a View All button.
+
+### Quick Actions
+
+Provide prominent buttons:
+
+- Add Daily Expense
+- Add Multiple Expenses
+- Record Bulk Purchase
+- View Today's Expenses
+
+### Date selection
+
+Allow the owner to select a date or date range to view historical dashboard information.
+
+When the selected date changes, update all relevant figures and charts.
+
+---
+
+## 7. Daily Expense Entry
+
+This is one of the most important features.
+
+Make adding an individual expense extremely fast.
+
+### Required fields
+
+- Expense Date: Default to today's date.
+- Item / Expense Name.
+- Amount (₹).
+- Category.
+- Subcategory.
+- Payment Method.
+
+### Optional fields
+
+- Vendor / Shop Name.
+- Quantity.
+- Unit (kg, gram, litre, packet, piece, box, etc.).
+- Unit Price.
+- Payment Status.
+- Notes.
+- Bill Number.
+- Receipt Attachment.
+
+### Payment methods
+
+Provide these default options:
+
+- Cash
+- UPI
+- Bank Transfer
+- Debit / Credit Card
+- Credit / Udhaar
+- Other
+
+Allow the owner to add custom payment methods from Settings.
+
+### Payment status
+
+Provide:
+
+- Paid
+- Partially Paid
+- Unpaid
+
+For partially paid and unpaid expenses, show the remaining amount clearly.
+
+The owner should be able to update an unpaid expense when payment is made.
+
+### Form behaviour
+
+- Date automatically defaults to today.
+- Amount should use numeric input.
+- Automatically calculate quantity × unit price when both are entered.
+- Allow manual amount entry.
+- Show category and subcategory selections clearly.
+- Validate all required fields.
+- Prevent zero or negative expense amounts.
+- Show a clear success message after saving.
+- Reset the form after successful submission.
+- Provide a Save and Add Another action.
+
+The application must not create duplicate records when a save operation is retried.
+
+---
+
+## 8. Multiple Expense Entry
+
+Create a separate **Add Multiple Expenses** mode.
+
+This will be useful when the owner returns from shopping with several small expense records.
+
+Example:
+
+| Item | Category | Amount |
+|---|---|---:|
+| Vegetables | Ingredients | ₹350 |
+| Milk | Dairy | ₹120 |
+| Cooking Oil | Ingredients | ₹500 |
+| Cleaning Liquid | Cleaning | ₹80 |
+| Packaging Boxes | Packaging | ₹250 |
+
+Requirements:
+
+- Allow multiple expense rows in one form.
+- Add and remove rows dynamically.
+- Each row must have its own description, category, and amount.
+- Use one shared expense date by default.
+- Allow individual dates when needed.
+- Allow a shared vendor and payment method, with individual overrides.
+- Display the running total.
+- Show the number of entries.
+- Save all entries in a single user action.
+- If the save partially fails, clearly identify which entries were not saved and avoid duplicating successful entries on retry.
+
+---
+
+## 9. Bulk Purchase Management
+
+This feature is different from multiple independent daily expenses.
+
+It is for recording a single large shopping bill containing multiple purchased items.
+
+Example:
+
+The owner purchases the following from a wholesale market:
+
+| Item | Quantity | Rate | Total |
+|---|---:|---:|---:|
+| Rice | 25 kg | ₹50 | ₹1,250 |
+| Cooking Oil | 10 litre | ₹140 | ₹1,400 |
+| Potatoes | 20 kg | ₹25 | ₹500 |
+| Onions | 15 kg | ₹30 | ₹450 |
+| Spices | 1 lot | ₹600 | ₹600 |
+
+### Bulk purchase form
+
+Bill details:
+- Purchase Date.
+- Vendor / Supplier Name.
+- Invoice Number.
+- Payment Method.
+- Payment Status.
+- Notes.
+- Optional Bill Photo.
+
+### Purchase line items
+
+Each item must contain:
+
+- Item Name.
+- Category.
+- Subcategory.
+- Quantity.
+- Unit.
+- Unit Price.
+- Discount (optional).
+- Tax (optional).
+- Final Item Amount.
+
+Allow the owner to add or remove as many item rows as necessary.
+
+### Automatic calculations
+
+Calculate:
+
+- Subtotal.
+- Total Discount.
+- Total Tax.
+- Additional Delivery / Transport Charges.
+- Final Bill Total.
+
+If invoice-level discounts, tax, or extra charges are applied, allocate them proportionally across the line items for accurate category reporting.
+
+Ensure that the sum of all saved line-item amounts is exactly equal to the final bill total.
+
+### Saving behaviour
+
+- Give every bulk purchase a unique purchase group ID.
+- Save individual line items with that group ID.
+- Show the purchase as one grouped bill in the interface.
+- Let the owner open the bill to see all its items.
+- Editing a bill must update its associated line items correctly.
+- Deleting a bill must not leave orphaned items.
+- Never count both the bulk purchase total and its individual items as separate expenses.
+
+The report calculations must count each rupee exactly once.
+
+---
+
+## 10. Default Expense Categories
+
+Create the following categories and subcategories.
+
+These should be editable from Settings.
+
+### A. Ingredients and Raw Materials
+
+- Vegetables
+- Fruits
+- Rice
+- Wheat / Flour
+- Pulses
+- Cooking Oil
+- Spices
+- Dairy Products
+- Milk
+- Paneer
+- Eggs
+- Meat / Chicken
+- Other Ingredients
+
+### B. Packaging and Disposables
+
+- Food Containers
+- Packaging Boxes
+- Carry Bags
+- Paper Bags
+- Disposable Plates
+- Cups
+- Spoons / Forks
+- Tissues
+- Aluminium Foil
+- Other Packaging
+
+### C. Gas and Utilities
+
+- LPG / Cooking Gas
+- Electricity
+- Water
+- Internet / Mobile
+- Other Utilities
+
+### D. Staff and Operations
+
+- Staff Salary
+- Daily Wages
+- Staff Meals
+- Cleaning Supplies
+- Hygiene Supplies
+- Pest Control
+- Other Staff Expenses
+
+### E. Delivery and Transportation
+
+- Delivery Charges
+- Fuel
+- Local Transportation
+- Loading / Unloading
+- Other Transport
+
+### F. Kitchen Maintenance and Equipment
+
+- Equipment Purchase
+- Small Kitchen Tools
+- Repair and Maintenance
+- Replacement Parts
+- Other Maintenance
+
+### G. Rent and Fixed Costs
+
+- Kitchen Rent
+- Maintenance Charges
+- Licenses and Fees
+- Software / Subscriptions
+- Other Fixed Costs
+
+### H. Marketing and Promotion
+
+- Online Advertising
+- Printed Materials
+- Promotions
+- Photography / Content
+- Other Marketing
+
+### I. Miscellaneous
+
+- Emergency Expenses
+- General Expenses
+- Other
+
+### Category functionality
+
+- Add new categories.
+- Edit existing categories.
+- Add or remove subcategories.
+- Deactivate categories without deleting historical records.
+- Select categories using a simple dropdown or icon-based layout.
+- Include an optional expense type classification: Fixed, Variable, or One-Time.
+
+---
+
+## 11. All Expenses Page
+
+Create a complete expense history page.
+
+Display expenses in a table on desktop and cards on mobile.
+
+### Display fields
+
+- Date.
+- Expense Name.
+- Category.
+- Vendor.
+- Amount.
+- Payment Method.
+- Payment Status.
+
+### Filters
+
+Allow filtering by:
+
+- Today.
+- Yesterday.
+- Last 7 Days.
+- Last 30 Days.
+- This Month.
+- Previous Month.
+- Custom Date Range.
+- Category.
+- Subcategory.
+- Vendor.
+- Payment Method.
+- Payment Status.
+- Daily Expense.
+- Bulk Purchase.
+
+### Search
+
+Add search functionality for:
+
+- Expense Name.
+- Vendor.
+- Invoice Number.
+- Notes.
+
+### Actions
+
+- View Expense.
+- Edit Expense.
+- Delete Expense.
+- Duplicate Expense.
+- Update Payment Status.
+
+Before deletion, display a confirmation message.
+
+Use soft deletion or an equivalent safe approach so accidental deletion can be audited and records are not silently lost.
+
+### Sorting
+
+Allow sorting by:
+
+- Newest First.
+- Oldest First.
+- Highest Amount.
+- Lowest Amount.
+
+Show the filtered total at the top of the results.
+
+---
+
+## 12. Recurring Expenses
+
+Create a section for expenses that occur regularly.
+
+Examples:
+
+- Monthly Kitchen Rent.
+- Staff Salary.
+- Internet Bill.
+- Regular Subscriptions.
+- Monthly Maintenance.
+
+### Recurring expense fields
+
+- Expense Name.
+- Category.
+- Expected Amount.
+- Frequency.
+- Start Date.
+- Next Due Date.
+- Vendor.
+- Notes.
+- Active / Inactive.
+
+### Frequency options
+
+- Daily.
+- Weekly.
+- Monthly.
+- Yearly.
+
+### Important behaviour
+
+Do not automatically add a recurring expense to actual spending before the owner confirms it.
+
+Instead:
+
+- Show upcoming and overdue expenses.
+- Provide a Mark as Paid / Record Expense button.
+- When clicked, create a normal expense record.
+- Advance the next due date.
+- Prevent the same recurring occurrence from being recorded twice.
+
+Display the next due date and payment status clearly.
+
+---
+
+## 13. Reports and Analytics
+
+Create a useful reports section with date filters.
+
+### Reports to include
+
+**1. Daily Expense Report**
+- Total spending for each day.
+- Number of expenses.
+- Category-wise breakdown.
+
+**2. Weekly Expense Report**
+- Weekly total.
+- Daily spending comparison.
+- Highest spending day.
+
+**3. Monthly Expense Report**
+- Total monthly expenses.
+- Category-wise spending.
+- Average daily expenses.
+- Highest spending category.
+- Highest spending day.
+
+**4. Category Report**
+- Category.
+- Total spending.
+- Percentage of total expenses.
+- Number of transactions.
+- Comparison with the previous period.
+
+**5. Vendor Report**
+- Vendor name.
+- Total purchases.
+- Number of bills.
+- Highest purchase.
+
+**6. Payment Report**
+- Cash spending.
+- UPI spending.
+- Bank transfer spending.
+- Card spending.
+- Credit / Udhaar.
+- Unpaid amounts.
+
+**7. Bulk Purchase Report**
+- Total bulk purchases.
+- Number of bulk bills.
+- Most frequently purchased ingredients.
+- Highest bulk purchase.
+
+### Comparison feature
+
+Allow the owner to compare:
+
+- This month vs last month.
+- This week vs last week.
+- Custom date ranges.
+
+Show both the actual difference in ₹ and percentage change.
+
+Handle zero-value comparison periods safely. Never display invalid percentages or NaN.
+
+### Export functionality
+
+Provide:
+
+- Download CSV.
+- Download Excel-compatible CSV.
+- Print-friendly report.
+- PDF download, if supported reliably.
+
+Exports must respect the currently selected date range and filters.
+
+---
+
+## 14. Expense Details and Management
+
+Every expense must have a unique ID.
+
+Allow the owner to:
+
+- Open an expense.
+- View all details.
+- Edit information.
+- Change its category.
+- Update its payment status.
+- Add notes.
+- Attach or view its receipt.
+- Delete it after confirmation.
+
+When editing an expense, update its existing record instead of creating a new one.
+
+Keep created_at and updated_at timestamps.
+
+For receipt attachments, use Google Drive integration if available. Store the resulting file link in the Google Sheet. If Drive access is not available, make the attachment field optional and explain the required integration.
+
+---
+
+## 15. Google Sheets Database Structure
+
+Create the spreadsheet automatically with these worksheets.
+
+Use the exact names below.
+
+### Sheet 1: Expenses
+
+One row per individual expense or bulk purchase line item.
+
+Columns:
+
+- expense_id
+- purchase_group_id
+- entry_type
+- expense_date
+- description
+- category
+- subcategory
+- vendor
+- quantity
+- unit
+- unit_price
+- subtotal
+- discount_amount
+- tax_amount
+- extra_charges_allocated
+- total_amount
+- payment_method
+- payment_status
+- paid_amount
+- outstanding_amount
+- paid_date
+- invoice_number
+- notes
+- receipt_url
+- expense_classification
+- created_at
+- updated_at
+- is_deleted
+
+For a normal daily expense, purchase_group_id should be blank.
+
+For a bulk purchase, every line item should have the same purchase_group_id.
+
+### Sheet 2: Categories
+
+Columns:
+
+- category_id
+- category_name
+- subcategory_name
+- icon
+- is_active
+- created_at
+- updated_at
+
+### Sheet 3: RecurringExpenses
+
+Columns:
+
+- recurring_id
+- expense_name
+- category
+- subcategory
+- expected_amount
+- frequency
+- start_date
+- next_due_date
+- vendor
+- notes
+- is_active
+- created_at
+- updated_at
+
+### Sheet 4: Vendors
+
+Columns:
+
+- vendor_id
+- vendor_name
+- phone
+- notes
+- created_at
+- updated_at
+
+### Sheet 5: AppSettings
+
+Columns:
+
+- setting_key
+- setting_value
+- updated_at
+
+Store configuration such as:
+
+- Business Name.
+- Currency.
+- Timezone.
+- Date Format.
+- Default Categories.
+- Payment Methods.
+- Spreadsheet Schema Version.
+
+### Sheet 6: AuditLog
+
+Columns:
+
+- log_id
+- record_id
+- action
+- old_values
+- new_values
+- changed_at
+- changed_by
+
+Use this for important edits and deletions.
+
+### Database rules
+
+- Generate unique IDs for all records.
+- Do not use spreadsheet row numbers as permanent record IDs.
+- Use IDs to find and update records.
+- Validate data before writing.
+- Prevent duplicate submissions.
+- Use batch operations when saving multiple entries.
+- Read the latest data before performing updates.
+- Handle concurrent edits safely.
+- Maintain consistent date formats.
+- Store monetary values as numeric values, not formatted text.
+- Handle empty cells and missing optional values safely.
+- Never delete or overwrite the spreadsheet's historical data during normal app initialisation.
+
+If a required worksheet already exists, inspect its headers and reuse it. Do not create duplicate worksheets or duplicate headers.
+
+---
+
+## 16. Settings
+
+Create an easy settings section.
+
+Allow the owner to manage:
+
+**Business Settings**
+- Business Name: Ritu's Cloud Kitchen.
+- Currency: INR (₹).
+- Timezone: Asia/Kolkata.
+- Date Format: DD/MM/YYYY.
+
+**Expense Categories**
+- Add.
+- Edit.
+- Deactivate.
+
+**Payment Methods**
+- Add.
+- Edit.
+- Deactivate.
+
+**Vendors**
+- Add.
+- Edit.
+- View.
+
+**Database Settings**
+- Show Google Sheets connection status.
+- Show spreadsheet name.
+- Provide an Open Spreadsheet link.
+- Show last successful sync time.
+- Provide a Retry Connection option.
+
+Do not provide a destructive reset button without a clear warning and additional confirmation.
+
+---
+
+## 17. Authentication and Data Security
+
+This is initially an owner-operated private application.
+
+Requirements:
+
+- Use Google Sign-In.
+- Restrict access to the authorised owner account.
+- Do not hardcode an invented email address.
+- Provide a secure way to configure the owner's authorised Google account.
+- Verify authorisation on the server for protected database operations.
+- Never expose private OAuth tokens or credentials to the browser.
+- Do not make the spreadsheet publicly editable.
+- Do not allow unauthorised users to view, update, or delete expense records.
+- Do not expose sensitive Google API error details to normal users.
+
+Do not treat hiding a frontend button as access control.
+
+---
+
+## 18. Important Business Logic
+
+Implement these rules carefully.
+
+1. Today's expense is calculated using the Asia/Kolkata timezone.
+2. The default month is the current calendar month.
+3. All reports must use actual saved data.
+4. Daily expenses and bulk purchase line items must never be counted twice.
+5. An unpaid expense still counts as an expense incurred, but not as money already paid.
+6. Show incurred expenses, paid amounts, and outstanding amounts separately.
+7. Partially paid expenses must display the correct remaining balance.
+8. Editing a record must not change its unique ID.
+9. Deactivated categories must remain visible in historical records.
+10. Deleted records must not appear in active spending totals.
+11. All calculations must be done accurately using numeric values.
+12. All amounts must be displayed in Indian Rupee format, such as ₹1,25,000.00.
+13. Handle missing data gracefully.
+14. Refreshing the application must not erase saved records.
+15. Do not silently save an expense when the database request fails.
+
+---
+
+## 19. Performance and User Experience
+
+- Keep pages lightweight.
+- Avoid unnecessary dependencies.
+- Display loading states while fetching information.
+- Display helpful success and error messages.
+- Disable save buttons while a request is processing.
+- Prevent accidental duplicate form submissions.
+- Use pagination for long expense histories.
+- Keep dashboard calculations efficient.
+- Refresh dashboard figures after a successful save or edit.
+- Make forms keyboard-friendly.
+- Ensure touch targets are large enough for mobile use.
+
+For common actions, minimise clicks and typing.
+
+Use sensible defaults wherever possible.
+
+---
+
+## 20. Testing and Quality Assurance
+
+Do not stop after creating the interface.
+
+Test the application end to end.
+
+### Test Case 1: Daily Expense
+
+Add a ₹250 vegetable expense paid in cash.
+
+Expected:
+- Expense is saved to Google Sheets.
+- Dashboard today's total increases by ₹250.
+- Ingredients category increases by ₹250.
+- Expense appears in the expense history.
+
+### Test Case 2: Multiple Expenses
+
+Add three entries together:
+
+- Vegetables: ₹300.
+- Milk: ₹100.
+- Packaging: ₹200.
+
+Expected:
+- Three individual records are created.
+- Combined expense total is ₹600.
+- Category totals are correct.
+
+### Test Case 3: Bulk Purchase
+
+Create one bulk purchase containing:
+
+- Rice: ₹1,000.
+- Oil: ₹800.
+- Vegetables: ₹500.
+
+Expected:
+- One purchase group is created.
+- All three item records have the same purchase_group_id.
+- Total bulk purchase value is ₹2,300.
+- Dashboard counts ₹2,300, not ₹4,600.
+- Category breakdown is correct.
+
+### Test Case 4: Unpaid Expense
+
+Create a ₹2,000 expense with unpaid status.
+
+Expected:
+- Total expenses incurred increases by ₹2,000.
+- Paid spending does not increase.
+- Outstanding expenses increase by ₹2,000.
+
+### Test Case 5: Partial Payment
+
+Update the ₹2,000 expense to show ₹500 paid.
+
+Expected:
+- Paid amount: ₹500.
+- Outstanding amount: ₹1,500.
+- Payment status: Partially Paid.
+
+### Test Case 6: Recurring Expense
+
+Create monthly rent of ₹10,000.
+
+Expected:
+- It appears as an upcoming recurring expense.
+- It is not counted as actual spending before confirmation.
+- Recording it as paid creates exactly one expense record.
+
+### Test Case 7: Edit and Delete
+
+Edit an existing expense and then test its deletion.
+
+Expected:
+- Editing updates the existing record.
+- Deletion removes it from active reports.
+- No duplicate or orphaned bulk purchase item is created.
+
+### Test Case 8: Data Persistence
+
+Save some expenses, close the application, and reopen it.
+
+Expected:
+- All saved records are still available.
+- Dashboard numbers match the spreadsheet.
+- Historical reports remain accurate.
+
+### Test Case 9: Mobile Responsiveness
+
+Test on:
+- Small mobile screen.
+- Standard mobile screen.
+- Tablet.
+- Desktop.
+
+Expected:
+- No broken layouts.
+- No horizontal scrolling.
+- Forms and buttons remain usable.
+- Charts and tables resize properly.
+
+### Test Case 10: Google Sheets Failure
+
+Temporarily simulate a failed read or write.
+
+Expected:
+- A clear error message is displayed.
+- Failed expenses are not falsely marked as saved.
+- The user can retry safely.
+- Previously saved records remain intact.
+
+---
+
+## 21. Final Build Instructions
+
+Follow this implementation sequence:
+
+**Phase 1:** Set up the application structure, authentication, and Google Sheets connection.
+
+**Phase 2:** Create the spreadsheet and all required worksheets.
+
+**Phase 3:** Build the responsive navigation and dashboard.
+
+**Phase 4:** Build daily expense entry and multiple expense entry.
+
+**Phase 5:** Build bulk purchase management.
+
+**Phase 6:** Build categories, vendors, and recurring expenses.
+
+**Phase 7:** Build the expense history and reports.
+
+**Phase 8:** Build settings, data validation, and security.
+
+**Phase 9:** Test all database operations, calculations, mobile screens, and error states.
+
+Do not skip any phase.
+
+If an integration requires manual authorisation, explain exactly what is required instead of pretending it is connected.
+
+### Final deliverables
+
+At the end, provide:
+
+1. A fully working application.
+2. A responsive mobile and desktop interface.
+3. The connected Google Spreadsheet.
+4. All database worksheets with correct headers.
+5. Functional expense creation, editing, and deletion.
+6. Functional daily, multiple, and bulk expense tracking.
+7. Working dashboard and reports.
+8. Google authentication and access restrictions.
+9. A summary of completed functionality.
+10. Any remaining setup steps required from the owner.
+
+### Most Important Instruction
+
+Prioritise reliability, accurate financial calculations, and ease of daily usage over unnecessary features.
+
+The owner should be able to open the app, tap Add Expense, enter an amount and category, save it, and immediately see the updated daily spending.
+
+**Build the actual application, not just a visual demonstration.**

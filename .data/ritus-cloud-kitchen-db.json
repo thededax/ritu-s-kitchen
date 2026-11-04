@@ -1,0 +1,318 @@
+{
+  "expenses": [
+    {
+      "expense_id": "EXP-1007",
+      "expense_date": "2026-11-04",
+      "product_name": "Tomatoes & Green Chilli",
+      "quantity": 2,
+      "unit": "kg",
+      "category": "Vegetables and Fruits",
+      "subcategory": "Vegetables",
+      "amount": 120,
+      "payment_method": "Cash",
+      "created_at": "2026-11-04T14:53:38.010Z",
+      "updated_at": "2026-11-04T14:53:38.010Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1001",
+      "expense_date": "2026-11-04",
+      "product_name": "Potato & Onion",
+      "quantity": 5,
+      "unit": "kg",
+      "category": "Vegetables and Fruits",
+      "subcategory": "Vegetables",
+      "amount": 220,
+      "payment_method": "Cash",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1002",
+      "expense_date": "2026-11-04",
+      "product_name": "Full Cream Milk",
+      "quantity": 3,
+      "unit": "litre",
+      "category": "Dairy and Other Food",
+      "subcategory": "Milk",
+      "amount": 198,
+      "payment_method": "UPI",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1003",
+      "expense_date": "2026-11-03",
+      "product_name": "Mustard Cooking Oil",
+      "quantity": 2,
+      "unit": "litre",
+      "category": "Grocery and Ingredients",
+      "subcategory": "Cooking Oil",
+      "amount": 340,
+      "payment_method": "UPI",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1004",
+      "expense_date": "2026-11-02",
+      "product_name": "Basmati Rice",
+      "quantity": 10,
+      "unit": "kg",
+      "category": "Grocery and Ingredients",
+      "subcategory": "Rice",
+      "amount": 950,
+      "payment_method": "UPI",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1005",
+      "expense_date": "2026-10-31",
+      "product_name": "Fresh Paneer & Curd",
+      "quantity": 1,
+      "unit": "kg",
+      "category": "Dairy and Other Food",
+      "subcategory": "Paneer",
+      "amount": 380,
+      "payment_method": "Cash",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    },
+    {
+      "expense_id": "EXP-1006",
+      "expense_date": "2026-10-29",
+      "product_name": "LPG Cylinder Refill",
+      "quantity": 1,
+      "unit": "piece",
+      "category": "Kitchen Essentials",
+      "subcategory": "LPG / Gas",
+      "amount": 910,
+      "payment_method": "UPI",
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z",
+      "is_deleted": false
+    }
+  ],
+  "contributions": [
+    {
+      "contribution_id": "CNT-1005",
+      "member_id": "MEM-3",
+      "contribution_date": "2026-11-04",
+      "amount": 500,
+      "payment_method": "UPI",
+      "note": "Mid-month top-up",
+      "created_at": "2026-11-04T14:53:44.437Z"
+    },
+    {
+      "contribution_id": "CNT-1001",
+      "member_id": "MEM-1",
+      "contribution_date": "2026-11-01",
+      "amount": 2000,
+      "payment_method": "UPI",
+      "note": "Monthly kitchen pool contribution",
+      "created_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "contribution_id": "CNT-1002",
+      "member_id": "MEM-2",
+      "contribution_date": "2026-11-01",
+      "amount": 2000,
+      "payment_method": "UPI",
+      "note": "Monthly kitchen pool contribution",
+      "created_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "contribution_id": "CNT-1003",
+      "member_id": "MEM-3",
+      "contribution_date": "2026-11-02",
+      "amount": 1500,
+      "payment_method": "Cash",
+      "note": "Added cash for vegetables & milk",
+      "created_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "contribution_id": "CNT-1004",
+      "member_id": "MEM-4",
+      "contribution_date": "2026-10-31",
+      "amount": 2000,
+      "payment_method": "UPI",
+      "note": "Monthly kitchen share",
+      "created_at": "2026-11-04T14:52:30.732Z"
+    }
+  ],
+  "members": [
+    {
+      "member_id": "MEM-1",
+      "member_name": "Ritu Raj",
+      "role": "Chef",
+      "avatar_url": "/assets/aistudio/image_99379257.png",
+      "is_active": true,
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "member_id": "MEM-2",
+      "member_name": "Member 2",
+      "is_active": true,
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "member_id": "MEM-3",
+      "member_name": "Member 3",
+      "is_active": true,
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z"
+    },
+    {
+      "member_id": "MEM-4",
+      "member_name": "Member 4",
+      "is_active": true,
+      "created_at": "2026-11-04T14:52:30.732Z",
+      "updated_at": "2026-11-04T14:52:30.732Z"
+    }
+  ],
+  "categories": [
+    {
+      "category_id": "CAT-001",
+      "category_name": "Vegetables and Fruits",
+      "subcategory_name": "Vegetables",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-002",
+      "category_name": "Vegetables and Fruits",
+      "subcategory_name": "Fruits",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-003",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Rice",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-004",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Wheat / Flour",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-005",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Pulses",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-006",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Cooking Oil",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-007",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Spices",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-008",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Sugar",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-009",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Salt",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-010",
+      "category_name": "Grocery and Ingredients",
+      "subcategory_name": "Other Ingredients",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-011",
+      "category_name": "Dairy and Other Food",
+      "subcategory_name": "Milk",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-012",
+      "category_name": "Dairy and Other Food",
+      "subcategory_name": "Paneer",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-013",
+      "category_name": "Dairy and Other Food",
+      "subcategory_name": "Curd",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-014",
+      "category_name": "Dairy and Other Food",
+      "subcategory_name": "Eggs",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-015",
+      "category_name": "Dairy and Other Food",
+      "subcategory_name": "Other Dairy",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-016",
+      "category_name": "Kitchen Essentials",
+      "subcategory_name": "LPG / Gas",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-017",
+      "category_name": "Kitchen Essentials",
+      "subcategory_name": "Water",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-018",
+      "category_name": "Kitchen Essentials",
+      "subcategory_name": "Cleaning Products",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-019",
+      "category_name": "Kitchen Essentials",
+      "subcategory_name": "Packaging",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-020",
+      "category_name": "Kitchen Essentials",
+      "subcategory_name": "Other Kitchen Essentials",
+      "is_active": true
+    },
+    {
+      "category_id": "CAT-021",
+      "category_name": "Other",
+      "subcategory_name": "Miscellaneous",
+      "is_active": true
+    }
+  ],
+  "connection": {
+    "connected": true,
+    "mode": "workspace_ledger",
+    "spreadsheetId": null,
+    "spreadsheetName": "Ritu's Cloud Kitchen - Expense Database",
+    "spreadsheetUrl": null,
+    "lastSyncTime": "2026-11-04T15:21:33.097Z",
+    "currentUserEmail": null
+  }
+}

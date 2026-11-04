@@ -1,0 +1,6 @@
+{
+  "name": "Ritu's Cloud Kitchen",
+  "description": "Mobile-first cloud kitchen expense tracker for daily kitchen spending, bulk purchases, recurring bills, and financial analytics backed by Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
